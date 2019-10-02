@@ -9,10 +9,12 @@ import numpy as np
 myheading = "Population stats from 2000s"
 mytitle = "by Spooky Creature"
 x_values = list(range(2009,2019))
-y1_values = [np.random.randint(low=1, high = 10, size = 1)[0]*n for n in np.random.randint(low=1, high=100, size=10)]
-y2_values = [np.random.randint(low=1, high = 10, size = 1)[0]*n for n in np.random.randint(low=1, high=100, size=10)]
-y3_values = [np.random.randint(low=1, high = 10, size = 1)[0]*n for n in np.random.randint(low=1, high=100, size=10)]
-y4_values = [np.random.randint(low=1, high = 10, size = 1)[0]*n for n in np.random.randint(low=1, high=100, size=10)]
+list_of_options = ['test']
+list_of_images = ['pumpkin.jpg']
+y1_values = populate()
+y2_values = populate()
+y3_values = populate()
+y4_values = populate()
 color1 = '#FF6B35'
 color2 = '#FFD151'
 color3 = '#136F63'
@@ -24,6 +26,9 @@ name4 = 'Witches'
 tabtitle = 'Spooky Sightings'
 sourceurl = 'https://www.infoplease.com/us/population/us-population-state-1790-2015'
 githublink = 'https://github.com/maxrgnt/dash-linechart-example'
+
+def populate():
+    return list(np.random.randint(low=1, high = 10, size = 1)[0]*n for n in np.random.randint(low=1, high=100, size=10))
 
 ########### Set up the chart
 
@@ -79,6 +84,13 @@ app.title=tabtitle
 ########### Set up the layout
 app.layout = html.Div(children=[
     html.H1(myheading),
+    dcc.RadioItems(
+    id='your_input_here',
+    options=[
+            {'label':list_of_options[0], 'value':list_of_images[0]},
+            ],
+    value=list_of_images[0],
+    ),
     dcc.Graph(
         id='figure-1',
         figure=fig
