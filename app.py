@@ -91,6 +91,7 @@ app.layout = html.Div(children=[
             ],
     value=list_of_images[0],
     ),
+    html.Div(id='your_output_here', children=''),
     dcc.Graph(
         id='figure-1',
         figure=fig
@@ -100,6 +101,12 @@ app.layout = html.Div(children=[
     html.A("Data Source", href=sourceurl),
     ]
 )
+
+########## Define Callback
+@app.callback(Output('your_output_here', 'children'),
+              [Input('your_input_here', 'value')])
+def radio_results(image_you_chose):
+    return html.Img(src=app.get_asset_url(image_you_chose), style={'width': 'auto', 'height': '50%'}),
 
 ############ Deploy
 if __name__ == '__main__':
