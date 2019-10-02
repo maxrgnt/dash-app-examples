@@ -90,6 +90,7 @@ app.layout = html.Div(children=[
     id='your_input_here',
     options=[
             {'label':list_of_options[0], 'value':list_of_images[0]},
+            {'label':list_of_options[1], 'value':list_of_images[1]},
             ],
     value=list_of_images[0],
     ),
@@ -108,6 +109,7 @@ app.layout = html.Div(children=[
 @app.callback(Output('your_output_here', 'children'),
               [Input('your_input_here', 'value')])
 def radio_results(image_you_chose):
+    fig = go.Figure(data=createTraces(),layout=layout)
     return html.Img(src=app.get_asset_url(image_you_chose), style={'width': 'auto', 'height': '50%'}),
 
 ############ Deploy
