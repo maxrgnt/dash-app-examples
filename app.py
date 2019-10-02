@@ -93,6 +93,7 @@ app.layout = html.Div(children=[
                 {'label':list_of_options[1], 'value':list_of_images[1]},
                 ],
         value=list_of_images[0],
+        labelStyle={'display': 'inline-block'}
         ),
     html.Div(id='your_output_here', children=''),
     dcc.Graph(
