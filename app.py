@@ -11,8 +11,8 @@ from dash.dependencies import Input, Output, State
 myheading = "Population stats from 2000s"
 mytitle = "by Spooky Creature"
 x_values = list(range(2009,2019))
-list_of_options = ['test']
-list_of_images = ['pumpkin.jpg']
+list_of_options = ['test','test2']
+list_of_images = ['pumpkin.jpg','pumpkin.jpg']
 y1_values = [np.random.randint(low=1, high = 10, size = 1)[0]*n for n in np.random.randint(low=1, high=100, size=10)]
 y2_values = [np.random.randint(low=1, high = 10, size = 1)[0]*n for n in np.random.randint(low=1, high=100, size=10)]
 y3_values = [np.random.randint(low=1, high = 10, size = 1)[0]*n for n in np.random.randint(low=1, high=100, size=10)]
@@ -34,42 +34,44 @@ githublink = 'https://github.com/maxrgnt/dash-linechart-example'
 
 ########### Set up the chart
 
-# create traces
-trace0 = go.Scatter(
-    x = x_values,
-    y = y1_values,
-    mode='lines+markers',
-    marker = {'color': color1},
-    line= dict(width=8, dash='dashdot'),
-    name = name1
-)
-trace1 = go.Scatter(
-    x = x_values,
-    y = y2_values,
-    mode='lines+markers',
-    marker = {'color': color2},
-    line= dict(width=8, dash='dashdot'),
-    name = name2
-)
-trace2 = go.Scatter(
-    x = x_values,
-    y = y3_values,
-    mode='lines+markers',
-    marker = {'color': color3},
-    line= dict(width=8, dash='dashdot'),
-    name = name3
-)
-trace3 = go.Scatter(
-    x = x_values,
-    y = y4_values,
-    mode='lines+markers',
-    marker = {'color': color4},
-    line= dict(width=8, dash='dashdot'),
-    name = name4
-)
+def createTraces():
+    # create traces
+    trace0 = go.Scatter(
+        x = x_values,
+        y = y1_values,
+        mode='lines+markers',
+        marker = {'color': color1},
+        line= dict(width=8, dash='dashdot'),
+        name = name1
+    )
+    trace1 = go.Scatter(
+        x = x_values,
+        y = y2_values,
+        mode='lines+markers',
+        marker = {'color': color2},
+        line= dict(width=8, dash='dashdot'),
+        name = name2
+    )
+    trace2 = go.Scatter(
+        x = x_values,
+        y = y3_values,
+        mode='lines+markers',
+        marker = {'color': color3},
+        line= dict(width=8, dash='dashdot'),
+        name = name3
+    )
+    trace3 = go.Scatter(
+        x = x_values,
+        y = y4_values,
+        mode='lines+markers',
+        marker = {'color': color4},
+        line= dict(width=8, dash='dashdot'),
+        name = name4
+    )
+    return[trace0,trace1,trace2,trace3]
 
 # assign traces to data
-data = [trace0, trace1, trace2, trace3]
+data = createTraces()
 layout = go.Layout(
     title = mytitle
 )
