@@ -11,10 +11,10 @@ mytitle = "by Spooky Creature"
 x_values = list(range(2009,2019))
 list_of_options = ['test']
 list_of_images = ['pumpkin.jpg']
-y1_values = populate()
-y2_values = populate()
-y3_values = populate()
-y4_values = populate()
+y1_values = [np.random.randint(low=1, high = 10, size = 1)[0]*n for n in np.random.randint(low=1, high=100, size=10)]
+y2_values = [np.random.randint(low=1, high = 10, size = 1)[0]*n for n in np.random.randint(low=1, high=100, size=10)]
+y3_values = [np.random.randint(low=1, high = 10, size = 1)[0]*n for n in np.random.randint(low=1, high=100, size=10)]
+y4_values = [np.random.randint(low=1, high = 10, size = 1)[0]*n for n in np.random.randint(low=1, high=100, size=10)]
 color1 = '#FF6B35'
 color2 = '#FFD151'
 color3 = '#136F63'
@@ -27,8 +27,8 @@ tabtitle = 'Spooky Sightings'
 sourceurl = 'https://www.infoplease.com/us/population/us-population-state-1790-2015'
 githublink = 'https://github.com/maxrgnt/dash-linechart-example'
 
-def populate():
-    return list(np.random.randint(low=1, high = 10, size = 1)[0]*n for n in np.random.randint(low=1, high=100, size=10))
+# def populate():
+#     return list(np.random.randint(low=1, high = 10, size = 1)[0]*n for n in np.random.randint(low=1, high=100, size=10))
 
 ########### Set up the chart
 
