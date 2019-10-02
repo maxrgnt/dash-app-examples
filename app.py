@@ -13,10 +13,6 @@ mytitle = "by Spooky Creature"
 x_values = list(range(2009,2019))
 list_of_options = ['test','test2']
 list_of_images = ['pumpkin.jpg','pumpkin.jpg']
-y1_values = [np.random.randint(low=1, high = 10, size = 1)[0]*n for n in np.random.randint(low=1, high=100, size=10)]
-y2_values = [np.random.randint(low=1, high = 10, size = 1)[0]*n for n in np.random.randint(low=1, high=100, size=10)]
-y3_values = [np.random.randint(low=1, high = 10, size = 1)[0]*n for n in np.random.randint(low=1, high=100, size=10)]
-y4_values = [np.random.randint(low=1, high = 10, size = 1)[0]*n for n in np.random.randint(low=1, high=100, size=10)]
 color1 = '#FF6B35'
 color2 = '#FFD151'
 color3 = '#136F63'
@@ -33,12 +29,14 @@ githublink = 'https://github.com/maxrgnt/dash-linechart-example'
 #     return list(np.random.randint(low=1, high = 10, size = 1)[0]*n for n in np.random.randint(low=1, high=100, size=10))
 
 ########### Set up the chart
+def randList():
+    return [np.random.randint(low=1, high = 10, size = 1)[0]*n for n in np.random.randint(low=1, high=100, size=10)]
 
 def createTraces():
     # create traces
     trace0 = go.Scatter(
         x = x_values,
-        y = y1_values,
+        y = randList(),
         mode='lines+markers',
         marker = {'color': color1},
         line= dict(width=8, dash='dashdot'),
@@ -46,7 +44,7 @@ def createTraces():
     )
     trace1 = go.Scatter(
         x = x_values,
-        y = y2_values,
+        y = randList(),
         mode='lines+markers',
         marker = {'color': color2},
         line= dict(width=8, dash='dashdot'),
@@ -54,7 +52,7 @@ def createTraces():
     )
     trace2 = go.Scatter(
         x = x_values,
-        y = y3_values,
+        y = randList(),
         mode='lines+markers',
         marker = {'color': color3},
         line= dict(width=8, dash='dashdot'),
@@ -62,7 +60,7 @@ def createTraces():
     )
     trace3 = go.Scatter(
         x = x_values,
-        y = y4_values,
+        y = randList(),
         mode='lines+markers',
         marker = {'color': color4},
         line= dict(width=8, dash='dashdot'),
