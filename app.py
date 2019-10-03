@@ -47,9 +47,9 @@ def createTracesForData(forYears):
                              , line = dict(width = 8, dash = 'dashdot')
                             )
         # Add instance to list of instances
-        tracelist.append(trace_i)
+        traces.append(trace_i)
     # Return array of scatterplots
-    return tracelist
+    return traces
 
 def createFigure(forYears):
     ''' Create sighting figure '''
