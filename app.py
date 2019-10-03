@@ -8,8 +8,7 @@ from dash.dependencies import Input, Output, State
 
 ########### Define your variables ######
 
-myheading = "Spooky sightings of creatures"
-mytitle = "👻"
+myheading = "Spooky creature sightings 👻"
 x_values = list(range(2009,2019))
 list_of_options = ['Pumpkins','Witches']
 list_of_images = ['pumpkin.jpg','witch.jpg']
@@ -20,7 +19,7 @@ color4 = '#3E2F5B'
 name1 = 'Castles'
 name2 = 'Graveyards'
 name3 = 'Haunted Houses'
-name4 = 'Candy Stores'
+name4 = 'Forests'
 tabtitle = 'spooktober'
 sourceurl = 'https://www.timeanddate.com/countdown/halloween'
 githublink = 'https://github.com/maxrgnt/pythdc2'
@@ -71,9 +70,7 @@ def createTraces():
 def create_fig():
     # assign traces to data
     data = createTraces()
-    layout = go.Layout(
-        title = mytitle
-    )
+    layout = go.Layout()
     return go.Figure(data=data,layout=layout)
 
 ########### Initiate the app
