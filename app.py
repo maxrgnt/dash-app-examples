@@ -49,19 +49,24 @@ app.title=tabtitle
 ########### Set up the layout
 app.layout = html.Div(children=[
     html.H1(myheading),
-        dcc.Input(id="newyear", type="number", placeholder="10 years"),
+        dcc.Input(
+            id="newyear", 
+            type="number", 
+            placeholder="10 years"),
         dcc.RadioItems(
-        id='your_input_here',
-        options=[
-                {'label':list_of_options[0], 'value':list_of_images[0]},
-                {'label':list_of_options[1], 'value':list_of_images[1]},
-                {'label':list_of_options[2], 'value':list_of_images[2]},
-                {'label':list_of_options[3], 'value':list_of_images[3]},
-                ],
-        value=list_of_images[0],
-        labelStyle={'display': 'inline-block'}
+            id='your_input_here',
+            options=[
+                    {'label':list_of_options[0], 'value':list_of_images[0]},
+                    {'label':list_of_options[1], 'value':list_of_images[1]},
+                    {'label':list_of_options[2], 'value':list_of_images[2]},
+                    {'label':list_of_options[3], 'value':list_of_images[3]},
+                    ],
+            value=list_of_images[0],
+            labelStyle={'display': 'inline-block'}
         ),
-    html.Div(id='your_output_here', children=''),
+        html.Div(
+            id='your_output_here', 
+            children=''),
         dcc.Graph(
             id='figure-1',
             figure=create_fig(10)
@@ -85,12 +90,11 @@ def radio_results(image_you_chose):
 def new_fig(image_you_chose):
     return create_fig(10)
 
-@app.callback(
-    Output("figure-1", "figure"),
-    [Input("newyear", "value")],
-)
+@app.callback(Output("figure-1", "figure"),
+            [Input("newyear", "value")],
+            )
 def new_fig2(val):
-    return create_fig(val)
+    return create_fig(Int(val))
 
 ############ Deploy
 if __name__ == '__main__':
