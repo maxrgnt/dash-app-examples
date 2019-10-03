@@ -10,8 +10,8 @@ from dash.dependencies import Input, Output, State
 
 myheading = "Spooky creature sightings 👻"
 x_values = list(range(2009,2019))
-list_of_options = ['Pumpkins','Witches']
-list_of_images = ['pumpkin.jpg','witch.jpg']
+list_of_options = ['Pumpkins','Witches','Ghosts','Vampires']
+list_of_images = ['pumpkin.jpg','witch.jpg','casper.png','vampire.jpeg']
 colors = ['#FF6B35','#FFD151','#136F63','#3E2F5B']
 places = ['Castles','Graveyards','Haunted Houses','Forests']
 tabtitle = 'spooktober'
