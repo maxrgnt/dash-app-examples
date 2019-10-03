@@ -12,60 +12,27 @@ myheading = "Spooky creature sightings 👻"
 x_values = list(range(2009,2019))
 list_of_options = ['Pumpkins','Witches']
 list_of_images = ['pumpkin.jpg','witch.jpg']
-color1 = '#FF6B35'
-color2 = '#FFD151'
-color3 = '#136F63'
-color4 = '#3E2F5B'
-name1 = 'Castles'
-name2 = 'Graveyards'
-name3 = 'Haunted Houses'
-name4 = 'Forests'
+colors = ['#FF6B35','#FFD151','#136F63','#3E2F5B']
+places = ['Castles','Graveyards','Haunted Houses','Forests']
 tabtitle = 'spooktober'
 sourceurl = 'https://www.timeanddate.com/countdown/halloween'
 githublink = 'https://github.com/maxrgnt/pythdc2'
-
-# def populate():
-#     return list(np.random.randint(low=1, high = 10, size = 1)[0]*n for n in np.random.randint(low=1, high=100, size=10))
 
 ########### Set up the chart
 def randList():
     return [np.random.randint(low=1, high = 10, size = 1)[0]*n for n in np.random.randint(low=1, high=100, size=10)]
 
 def createTraces():
-    # create traces
-    trace0 = go.Scatter(
-        x = x_values,
-        y = randList(),
-        mode='lines+markers',
-        marker = {'color': color1},
-        line= dict(width=8, dash='dashdot'),
-        name = name1
-    )
-    trace1 = go.Scatter(
-        x = x_values,
-        y = randList(),
-        mode='lines+markers',
-        marker = {'color': color2},
-        line= dict(width=8, dash='dashdot'),
-        name = name2
-    )
-    trace2 = go.Scatter(
-        x = x_values,
-        y = randList(),
-        mode='lines+markers',
-        marker = {'color': color3},
-        line= dict(width=8, dash='dashdot'),
-        name = name3
-    )
-    trace3 = go.Scatter(
-        x = x_values,
-        y = randList(),
-        mode='lines+markers',
-        marker = {'color': color4},
-        line= dict(width=8, dash='dashdot'),
-        name = name4
-    )
-    return[trace0,trace1,trace2,trace3]
+    tracelist = []
+    for i in range(0,len(colors)-1):
+        trace_i = go.Scatter(x = x_values, y = randlist()
+                             , mode = 'line+markers'
+                             , marker = {'color': colors[i]}
+                             , line = dict(width = 8, dash = 'dashdot')
+                             , name = places[i]
+                            )
+    tracelist.append(trace_i)
+    return tracelist
 
 def create_fig():
     # assign traces to data
