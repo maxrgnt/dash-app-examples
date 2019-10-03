@@ -50,7 +50,7 @@ app.title=tabtitle
 app.layout = html.Div(children=[
     html.H1(myheading),
         dcc.Input(
-            value = 11,
+            value = 5,
             id="newyear", 
             type="number", 
             placeholder="11"),
@@ -94,11 +94,11 @@ def new_fig(image_you_chose):
     return create_fig(10)
 
 ########## Define Callback
-@app.callback(Output("number-out", "children"),
+@app.callback(Output('figure-1', 'figure'), #Output("number-out", "children"),
             [Input("newyear", "value")],
             )
 def number_render(val):
-    return "years: {}".format(val)
+    return create_fig(val) #"years: {}".format(val)
 
 
 ############ Deploy
