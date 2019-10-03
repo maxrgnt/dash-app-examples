@@ -91,11 +91,11 @@ def radio_results(image_you_chose):
 def new_fig(image_you_chose):
     return create_fig(10)
 
-# @app.callback(Output("number-out", "children"),
-#             [Input("dfalse", "value")],
-#             )
-# def number_render(fval):
-#     return "years: {}".format(fval)
+@app.callback(Output("number-out", "children"),
+            [Input("newyear", "value")],
+            )
+def number_render(fval):
+    return "years: {}".format(fval)
 
 ############ Deploy
 if __name__ == '__main__':
