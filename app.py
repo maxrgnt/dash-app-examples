@@ -50,7 +50,7 @@ app.title=tabtitle
 app.layout = html.Div(children=[
     html.H1(myheading),
         dcc.Input(
-            value = "11",
+            value = 11,
             id="newyear", 
             type="number", 
             placeholder="11"),
@@ -86,18 +86,20 @@ app.layout = html.Div(children=[
 def radio_results(image_you_chose):
     return html.Img(src=app.get_asset_url(image_you_chose), style={'width': 'auto', 'height': '50%'})
 
+########## Define Callback
 @app.callback(Output('figure-1', 'figure'),
               [Input('your_input_here', 'value')]
              )
 def new_fig(image_you_chose):
     return create_fig(10)
 
+########## Define Callback
 @app.callback(Output("number-out", "children"),
             [Input("newyear", "value")],
             )
-def number_render(fval):
-    print(Int(fval))
-    return "years: {}".format(fval)
+def number_render(val):
+    return "years: {}".format(val)
+
 
 ############ Deploy
 if __name__ == '__main__':
