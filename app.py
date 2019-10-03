@@ -85,10 +85,10 @@ app.layout = html.Div(children=[
     dcc.RadioItems(
         id='spookyRadioInput',
         options=[
-                {'label':list_of_options[0], 'value':list_of_images[0]},
-                {'label':list_of_options[1], 'value':list_of_images[1]},
-                {'label':list_of_options[2], 'value':list_of_images[2]},
-                {'label':list_of_options[3], 'value':list_of_images[3]},
+                {'label':list_of_options[0], 'value':[0,list_of_images[0]]},
+                {'label':list_of_options[1], 'value':[1,list_of_images[1]]},
+                {'label':list_of_options[2], 'value':[2,list_of_images[2]]},
+                {'label':list_of_options[3], 'value':[3,list_of_images[3]]},
                 ],
         value=list_of_images[0],
         labelStyle={'display': 'inline-block'}
@@ -114,7 +114,7 @@ app.layout = html.Div(children=[
              [Input('spookyRadioInput', 'value')])
 def updateImageUsing(radioInput):
     ''' Return picture for selected radio button '''
-    return html.Img(src=app.get_asset_url(radioInput), style={'width': 'auto', 'height': '50%'})
+    return html.Img(src=app.get_asset_url(radioInput[1]), style={'width': 'auto', 'height': '50%'})
 
 @app.callback(Output('spookyGraphOutput', 'figure'),
              [Input('spookyRadioInput', 'value'), Input('spookySliderInput', 'value')])
