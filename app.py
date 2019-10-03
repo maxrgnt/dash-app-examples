@@ -112,15 +112,7 @@ def radio_results(image_you_chose):
 @app.callback(Output('figure-1', 'figure'),
               [Input('your_input_here', 'value')]
              )
-def new_fig():
-    trace0 = go.Scatter(
-        x = x_values,
-        y = randList(),
-        mode='lines+markers',
-        marker = {'color': color1},
-        line= dict(width=8, dash='dashdot'),
-        name = name1
-    )
+def new_fig(doesthismatter):
     # assign traces to data
     return {'data': [trace0],
             'layout': go.Layout()
