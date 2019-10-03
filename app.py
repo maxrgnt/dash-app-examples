@@ -80,8 +80,7 @@ app.layout = html.Div(children=[
     # Break
     html.Br(),
     # Subheading
-    html.H2(
-        'What sighting are you interested in?'),
+    html.H2('What sighting are you interested in?'),
     # Radio buttons
     dcc.RadioItems(
         id='spookyRadioInput',
