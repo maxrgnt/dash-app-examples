@@ -50,10 +50,13 @@ app.title=tabtitle
 ########### Set up the layout
 app.layout = html.Div(children=[
     html.H1(myheading),
-        dcc.Input(
-            value = 5,
-            id='newyear', 
-            type='number'),
+        dcc.Slider(
+            id='myslider',
+            min=0,
+            max=20,
+            step=1,
+            value=10,
+        ),
         dcc.RadioItems(
             id='your_input_here',
             options=[
@@ -87,7 +90,7 @@ def radio_results(image_you_chose):
 
 ########## Define Callback
 @app.callback(Output('figure-1', 'figure'),
-              [Input('your_input_here', 'value'),Input('newyear', 'value')]
+              [Input('your_input_here', 'value'),Input('myslider', 'value')]
              )
 def new_fig(inp1,inp2):
     return create_fig(inp2)
