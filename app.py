@@ -24,7 +24,7 @@ def randList():
 
 def createTraces():
     tracelist = []
-    for i in range(0,len(colors)-1):
+    for i in range(0,len(colors)):
         trace_i = go.Scatter(x = x_values, y = randlist()
                              , mode = 'line+markers'
                              , marker = {'color': colors[i]}
