@@ -50,10 +50,10 @@ app.title=tabtitle
 app.layout = html.Div(children=[
     html.H1(myheading),
         dcc.Input(
-            value = "10",
+            value = "11",
             id="newyear", 
             type="number", 
-            placeholder="10"),
+            placeholder="11"),
         html.Div(id="number-out"),
         dcc.RadioItems(
             id='your_input_here',
