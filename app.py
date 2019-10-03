@@ -100,7 +100,7 @@ app.layout = html.Div(children=[
     html.Div(id='your_output_here', children=''),
     dcc.Graph(
         id='figure-1',
-        figure=fig
+#         figure=fig
     ),
     html.A('Code on Github', href=githublink),
     html.Br(),
