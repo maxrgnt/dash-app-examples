@@ -53,11 +53,7 @@ app.title=tabtitle
 ########### Set up the layout
 app.layout = html.Div(children=[
     html.H1(myheading),
-        dcc.Input(
-        id="input_{}".format(_),
-        type=_,
-        placeholder="input type {}".format(_),
-        ),
+        dcc.Input(id="dfalse", type="number", placeholder="How many years of data?"),
         dcc.RadioItems(
         id='your_input_here',
         options=[
@@ -95,10 +91,10 @@ def new_fig(image_you_chose):
 
 @app.callback(
     Output("figure-1", "figure"),
-    [Input("input_{}".format(_), "value") for _ in ALLOWED_TYPES],
+    [Input("dfalse", "value")],
 )
-def new_fig(image_you_chose):
-    setYears = "value"
+def new_fig(val):
+    setYears = val
     return create_fig(setYears)
 
 ############ Deploy
