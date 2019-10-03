@@ -1,44 +1,63 @@
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
+from dash.dependencies import Input, Output
 import plotly.graph_objs as go
 import numpy as np
-from dash.dependencies import Input, Output, State
 
 ########### Define your variables ######
-
 myheading = "🎃 🧙 Spooky sightings over the years 👻 🧛"
-list_of_options = ['Pumpkins','Witches','Ghosts','Vampires']
+list_of_options = [' Pumpkins ',' Witches ',' Ghosts ',' Vampires ']
 list_of_images = ['pumpkin.jpg','witches.jpeg','ghost.png','vampire.jpeg']
 colors = ['#FF6B35','#FFD151','#136F63','#3E2F5B']
-places = ['Castles','Graveyards','Haunted Houses','Forests']
+locations = ['Castles','Graveyards','Haunted Houses','Forests']
 tabtitle = 'spooktober'
 sourceurl = 'https://www.timeanddate.com/countdown/halloween'
 githublink = 'https://github.com/maxrgnt/pythdc2'
 
 ########### Set up the chart
-def randList(years):
-    return [np.random.randint(low=1, high = 10, size = 1)[0]*n for n in np.random.randint(low=1, high=100, size=years)]
 
-def createTraces(traceYear):
-    tracelist = []
-    for i in range(0,len(colors)):
-        trace_i = go.Scatter(x = [str(a).replace(',','') for a in range(2019-traceYear,2019)]
-                             , y = randList(traceYear)
-                             , mode = 'lines+markers'
+def randomData(forYears):
+    ''' Return an array of random data for the number of years passed in '''
+    let numberOfYears = forYears
+    # Create array of random number of sightings per year
+    sightingsPerYear = np.random.randint(low=1, high=100, size=numberOfYears)
+    # Multiplier to further randomize the number of sightings per year
+    anotherRandomFactor = np.random.randint(low=1, high = 10, size = 1)[0]
+    # Create array of new sightings per year
+    newSightingsPerYear = [sightings*anotherRandomFactor for sightings in sightingsPerYear]
+    # Return new array
+    return newSightingsPerYear
+
+def createTracesForData(forYears):
+    ''' Create scatterplot instance for each location in the location array '''
+    traces = []
+    # Iterate over every item in location array to plot data for 
+    for i in range(0,len(locations)):
+        # Create range of years for x-axis
+        yearRange = range(2019-forYears,2019)
+        # Remove ',' from years (2,019 -> 2019)
+        rangeOfYears =  [str(year).replace(',','') for year in yearRange]
+        # Instance of scatter plot
+        trace_i = go.Scatter(x = rangeOfYears
+                             , y = randomData(forYears)
+                             , name = locations[i]
                              , marker = {'color': colors[i]}
+                             , mode = 'lines+markers'
                              , line = dict(width = 8, dash = 'dashdot')
-                             , name = places[i]
                             )
+        # Add instance to list of instances
         tracelist.append(trace_i)
+    # Return array of scatterplots
     return tracelist
 
-def create_fig(figYears):
-    # assign traces to data
-    data = createTraces(figYears)
-    layout = go.Layout(
-            xaxis={'tickformat': ',d'}
-            )
+def createFigure(forYears):
+    ''' Create sighting figure '''
+    # Assign traces to data
+    data = createTracesForData(forYears)
+    # Set layout
+    layout = go.Layout()
+    # Return figure
     return go.Figure(data=data,layout=layout)
 
 ########### Initiate the app
@@ -82,7 +101,7 @@ app.layout = html.Div(children=[
             children=''),
         dcc.Graph(
             id='figure-1',
-            figure=create_fig(10)
+            figure=createFigure(10)
         ),
     html.A('Code on Github', href=githublink),
     html.Br(),
@@ -92,17 +111,16 @@ app.layout = html.Div(children=[
 
 ########## Define Callback
 @app.callback(Output('your_output_here', 'children'),
-              [Input('your_input_here', 'value')]
-             )
-def radio_results(image_you_chose):
-    return html.Img(src=app.get_asset_url(image_you_chose), style={'width': 'auto', 'height': '50%'})
+              [Input('your_input_here', 'value')])
+def radio_results(radioButton):
+    ''' Return picture for selected radio button '''
+    return html.Img(src=app.get_asset_url(radioButton), style={'width': 'auto', 'height': '50%'})
 
-########## Define Callback
 @app.callback(Output('figure-1', 'figure'),
-              [Input('your_input_here', 'value'),Input('myslider', 'value')]
-             )
-def new_fig(inp1,inp2):
-    return create_fig(inp2)
+              [Input('your_input_here', 'value'),Input('myslider', 'value')])
+def new_fig(radioButton,sliderVal):
+    ''' Update graph with new random data when radio button or slider altered '''
+    return createFigure(sliderVal)
 
 ############ Deploy
 if __name__ == '__main__':
