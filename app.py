@@ -48,7 +48,7 @@ app.title=tabtitle
 ########### Set up the layout
 app.layout = html.Div(children=[
     html.H1(myheading),
-        dcc.Input(id="dfalse", type="number", placeholder=f'{setYears} years',
+        dcc.Input(id="dfalse", type="number", placeholder='10 years',
         dcc.RadioItems(
         id='your_input_here',
         options=[
