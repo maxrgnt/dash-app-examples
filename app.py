@@ -64,6 +64,8 @@ app.layout = html.Div(children=[
                 20: '20 years'
             },
         ),
+        html.Br(),
+        html.H2('which type of sighting would you like to see?'),
         dcc.RadioItems(
             id='your_input_here',
             options=[
