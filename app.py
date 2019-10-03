@@ -79,11 +79,8 @@ def radio_results(image_you_chose):
 @app.callback(Output('figure-1', 'figure'),
               [Input('your_input_here', 'value')]
              )
-def new_fig(doesthismatter):
-    # assign traces to data
-    return {'data': [trace0],
-            'layout': go.Layout()
-           }
+def new_fig():
+    return create_fig()
 
 ############ Deploy
 if __name__ == '__main__':
