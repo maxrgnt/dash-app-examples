@@ -22,8 +22,8 @@ name2 = 'Graveyards'
 name3 = 'Haunted Houses'
 name4 = 'Candy Stores'
 tabtitle = 'spooktober'
-sourceurl = 'https://www.infoplease.com/us/population/us-population-state-1790-2015'
-githublink = 'https://github.com/maxrgnt/dash-linechart-example'
+sourceurl = 'https://www.timeanddate.com/countdown/halloween'
+githublink = 'https://github.com/maxrgnt/pythdc2'
 
 # def populate():
 #     return list(np.random.randint(low=1, high = 10, size = 1)[0]*n for n in np.random.randint(low=1, high=100, size=10))
