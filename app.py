@@ -52,10 +52,17 @@ app.layout = html.Div(children=[
     html.H1(myheading),
         dcc.Slider(
             id='myslider',
-            min=0,
+            min=1,
             max=20,
             step=1,
             value=10,
+            marks={
+                1: '1 year',
+                5: '5 years',
+                10: '10 years',
+                15: '15 years',
+                20: '20 years'
+            },
         ),
         dcc.RadioItems(
             id='your_input_here',
