@@ -59,9 +59,11 @@ app.layout = html.Div(children=[
         labelStyle={'display': 'inline-block'}
         ),
     html.Div(id='your_output_here', children=''),
-    dcc.Graph(
-        id='figure-1',
-        figure=create_fig()
+    html.Div(
+        dcc.Graph(
+            id='figure-1',
+            figure=create_fig()
+        )
     ),
     html.A('Code on Github', href=githublink),
     html.Br(),
