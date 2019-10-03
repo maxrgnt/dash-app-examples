@@ -25,8 +25,8 @@ def randList():
 def createTraces():
     tracelist = []
     for i in range(0,len(colors)):
-        trace_i = go.Scatter(x = x_values, y = randlist()
-                             , mode = 'line+markers'
+        trace_i = go.Scatter(x = x_values, y = randList()
+                             , mode = 'lines+markers'
                              , marker = {'color': colors[i]}
                              , line = dict(width = 8, dash = 'dashdot')
                              , name = places[i]
