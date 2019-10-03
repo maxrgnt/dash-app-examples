@@ -8,7 +8,6 @@ from dash.dependencies import Input, Output, State
 ########### Define your variables ######
 
 myheading = "🎃 Spooky sightings over the years 👻 🧛"
-setYears = 10
 list_of_options = ['Pumpkins','Witches','Ghosts','Vampires']
 list_of_images = ['pumpkin.jpg','witches.jpeg','ghost.png','vampire.jpeg']
 colors = ['#FF6B35','#FFD151','#136F63','#3E2F5B']
@@ -63,7 +62,7 @@ app.layout = html.Div(children=[
     html.Div(id='your_output_here', children=''),
         dcc.Graph(
             id='figure-1',
-            figure=create_fig(setYears)
+            figure=create_fig(10)
         ),
     html.A('Code on Github', href=githublink),
     html.Br(),
@@ -79,7 +78,7 @@ def radio_results(image_you_chose):
     return html.Img(src=app.get_asset_url(image_you_chose), style={'width': 'auto', 'height': '50%'})
 
 @app.callback(Output('figure-1', 'figure'),
-#               [Input('your_input_here', 'value')]
+              [Input('your_input_here', 'value')]
              )
 def new_fig(image_you_chose):
     return create_fig(5)
