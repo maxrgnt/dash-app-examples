@@ -88,10 +88,10 @@ def radio_results(image_you_chose):
 
 ########## Define Callback
 @app.callback(Output('figure-1', 'figure'),
-              [Input('your_input_here', 'value')]
+              [Input('your_input_here', 'value'),Input('newyear', 'value')]
              )
-def new_fig(image_you_chose):
-    return create_fig(10)
+def new_fig(inp1,inp2):
+    return create_fig(inp2)
 
 ########## Define Callback
 @app.callback(Output('number-out', 'children'), #Output('figure-1', 'figure'), 
