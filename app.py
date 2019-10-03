@@ -52,8 +52,7 @@ app.layout = html.Div(children=[
         dcc.Input(
             value = 5,
             id='newyear', 
-            type='number', 
-            placeholder='11'),
+            type='number'),
         html.Div(id='number-out'),
         dcc.RadioItems(
             id='your_input_here',
