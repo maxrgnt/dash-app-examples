@@ -36,7 +36,7 @@ def create_fig(figYears):
     # assign traces to data
     data = createTraces(figYears)
     layout = go.Layout(
-            yaxis={'tickformat': ',d'}
+            xaxis={'tickformat': ',d'}
             )
     return go.Figure(data=data,layout=layout)
 
