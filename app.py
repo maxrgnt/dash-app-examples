@@ -94,11 +94,11 @@ def new_fig(image_you_chose):
     return create_fig(10)
 
 ########## Define Callback
-@app.callback(Output('figure-1', 'figure'), #Output("number-out", "children"),
+@app.callback(Output("number-out", "children"), #Output('figure-1', 'figure'), 
             [Input('newyear', 'value')]
             )
 def number_render(val):
-    return create_fig(Int(val)) #"years: {}".format(val)
+    return 'years: {}'.format(val) #create_fig(Int(val)) 
 
 
 ############ Deploy
