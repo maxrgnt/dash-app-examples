@@ -99,7 +99,8 @@ app.layout = html.Div(children=[
         children=''),
     # Graph of data
     dcc.Graph(
-        id='spookyGraphOutput'
+        id='spookyGraphOutput',
+        figure = createFigure(10)
     ),
     # Various links
     html.A('Code on Github', href=githublink),
@@ -110,14 +111,14 @@ app.layout = html.Div(children=[
 
 ########## Define Callback
 @app.callback(Output('spookyRadioOutput', 'children'),
-              [Input('spookyRadioInput', 'value')])
-def radio_results(radioInput):
+             [Input('spookyRadioInput', 'value')])
+def updateImageUsing(radioInput):
     ''' Return picture for selected radio button '''
     return html.Img(src=app.get_asset_url(radioInput), style={'width': 'auto', 'height': '50%'})
 
 @app.callback(Output('spookyGraphOutput', 'figure'),
-              [Input('spookyRadioInput', 'value'),Input('spookySliderInput', 'value')])
-def new_fig(radioInput,sliderInput):
+             [Input('spookyRadioInput', 'value'), Input('spookySliderInput', 'value')])
+def updateGraphUsing(radioInput,sliderInput):
     ''' Update graph with new random data when radio button or slider altered '''
     return createFigure(sliderInput)
 
