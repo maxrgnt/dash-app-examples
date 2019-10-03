@@ -59,10 +59,10 @@ def createTraces(forObject,forYears):
     # Return array of scatterplots
     return traces
     
-def createFigure(forObject,forYears):
+def createFigure(forYears):
     ''' Create sighting figure '''
     # Assign traces to data
-    data = createTraces(forObject,forYears)
+    data = createTraces(0,forYears)
     # Set layout
     layout = go.Layout()
     # Return figure
@@ -108,7 +108,7 @@ app.layout = html.Div(children=[
     # Graph of data
     dcc.Graph(
         id='spookyGraphOutput',
-        figure = createFigure(0,10)
+        figure = createFigure(10)
     ),
     # Various links
     html.A('Code on Github', href=githublink),
