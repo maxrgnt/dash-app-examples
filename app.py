@@ -16,7 +16,7 @@ places = ['Castles','Graveyards','Haunted Houses','Forests']
 tabtitle = 'spooktober'
 sourceurl = 'https://www.timeanddate.com/countdown/halloween'
 githublink = 'https://github.com/maxrgnt/pythdc2'
-setYear = 10
+setYears = 10
 
 ########### Set up the chart
 def randList(years):
@@ -85,13 +85,13 @@ def radio_results(image_you_chose):
 def new_fig(image_you_chose):
     return create_fig(setYears)
 
-# @app.callback(
-#     Output("figure-1", "figure"),
-#     [Input("dfalse", "value")],
-# )
-# def new_fig(val):
-#     setYears = val
-#     return create_fig(setYears)
+@app.callback(
+    Output("figure-1", "figure"),
+    [Input("dfalse", "value")],
+)
+def new_fig(val):
+    setYears = val
+    return create_fig(setYears)
 
 ############ Deploy
 if __name__ == '__main__':
