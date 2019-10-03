@@ -8,7 +8,7 @@ from dash.dependencies import Input, Output, State
 ########### Define your variables ######
 
 myheading = "🎃 Spooky sightings over past 10 years 👻 🧛"
-x_values = list(range(2009,2019))
+setYears = 10
 list_of_options = ['Pumpkins','Witches','Ghosts','Vampires']
 list_of_images = ['pumpkin.jpg','witches.jpeg','ghost.png','vampire.jpeg']
 colors = ['#FF6B35','#FFD151','#136F63','#3E2F5B']
@@ -16,7 +16,6 @@ places = ['Castles','Graveyards','Haunted Houses','Forests']
 tabtitle = 'spooktober'
 sourceurl = 'https://www.timeanddate.com/countdown/halloween'
 githublink = 'https://github.com/maxrgnt/pythdc2'
-setYears = 10
 
 ########### Set up the chart
 def randList(years):
@@ -25,7 +24,7 @@ def randList(years):
 def createTraces(traceYear):
     tracelist = []
     for i in range(0,len(colors)):
-        trace_i = go.Scatter(x = x_values, y = randList(traceYear)
+        trace_i = go.Scatter(x = list(range(2019-traceYear,2019)), y = randList(traceYear)
                              , mode = 'lines+markers'
                              , marker = {'color': colors[i]}
                              , line = dict(width = 8, dash = 'dashdot')
@@ -85,13 +84,13 @@ def radio_results(image_you_chose):
 def new_fig(image_you_chose):
     return create_fig(setYears)
 
-@app.callback(
-    Output("figure-1", "figure"),
-    [Input("dfalse", "value")],
-)
-def new_fig(val):
-    setYears = val
-    return create_fig(setYears)
+# @app.callback(
+#     Output("figure-1", "figure"),
+#     [Input("dfalse", "value")],
+# )
+# def new_fig(val):
+#     setYears = val
+#     return create_fig(setYears)
 
 ############ Deploy
 if __name__ == '__main__':
