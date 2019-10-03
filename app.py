@@ -54,6 +54,8 @@ app.layout = html.Div(children=[
         options=[
                 {'label':list_of_options[0], 'value':list_of_images[0]},
                 {'label':list_of_options[1], 'value':list_of_images[1]},
+                {'label':list_of_options[2], 'value':list_of_images[2]},
+                {'label':list_of_options[3], 'value':list_of_images[3]},
                 ],
         value=list_of_images[0],
         labelStyle={'display': 'inline-block'}
