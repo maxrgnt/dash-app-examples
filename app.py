@@ -113,8 +113,16 @@ def radio_results(image_you_chose):
               [Input('your_input_here', 'value')]
              )
 def new_fig():
+    trace0 = go.Scatter(
+        x = x_values,
+        y = randList(),
+        mode='lines+markers',
+        marker = {'color': color1},
+        line= dict(width=8, dash='dashdot'),
+        name = name1
+    )
     # assign traces to data
-    return {'data': createTraces(),
+    return {'data': [trace0],
             'layout': go.Layout()
            }
 
