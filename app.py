@@ -6,49 +6,41 @@ import plotly.graph_objs as go
 import numpy as np
 
 ########### Define your variables ######
-# Important Links
+myheading = "🎃 🧙 Spooky sightings over the years 👻 🧛"
+list_of_options = [' Pumpkins ',' Witches ',' Ghosts ',' Vampires ']
+list_of_images = ['pumpkin.jpg','witches.jpeg','ghost.png','vampire.jpeg']
+colors = ['#FF6B35','#FFD151','#136F63','#3E2F5B']
+locations = ['Castles','Graveyards','Haunted Houses','Forests']
+tabtitle = 'spooktober'
 sourceurl = 'https://www.timeanddate.com/countdown/halloween'
 githublink = 'https://github.com/maxrgnt/pythdc2/blob/master/app.py'
-# Content
-tabtitle = 'spooktober'
-myheading = "🎃 🧙 Spooky sightings over the years 👻 🧛"
-# Static Data
-locations = ['Castles','Graveyards','Haunted Houses','Forests']
-locationColors = ['#FF6B35','#FFD151','#136F63','#3E2F5B']
-objects = [' Pumpkins ',' Witches ',' Ghosts ',' Vampires ']
-objectImages = ['pumpkin.jpg','witches.jpeg','ghost.png','vampire.jpeg']
-# Dynamic Data
-years = 10
-yearRange = setYearRange(years)
-sightingsByObjectByYear = generateRandomData(years)
 
-def setYearRange(forYears):
-    # Create range of years given # years passed in
-    years = range(2019-forYears,2019)
-    # Remove ',' from years (2,019 -> 2019)
-    return [str(year).replace(',','') for year in years]
-
-def generateRandomData(forYears):
-    ''' Return an array of random data for the number of years passed in '''
-    # Create array of random number of sightings per year
-    z = []
-    for x in range(0,len(objects)):
-        xy = []
-        for y in range(0,len(locations)):
-            xy.append(list(np.random.randint(low=1, high=100, size=forYears)))
-        z.append(xy)
-    return z
-    
 ########### Set up the chart
 
-def createTraces(forObject,forYears):
+def randomData(forYears):
+    ''' Return an array of random data for the number of years passed in '''
+    numberOfYears = forYears
+    # Create array of random number of sightings per year
+    sightingsPerYear = np.random.randint(low=1, high=100, size=numberOfYears)
+    # Multiplier to further randomize the number of sightings per year
+    anotherRandomFactor = np.random.randint(low=1, high = 10, size = 1)[0]
+    # Create array of new sightings per year
+    newSightingsPerYear = [sightings*anotherRandomFactor for sightings in sightingsPerYear]
+    # Return new array
+    return newSightingsPerYear
+
+def createTracesForData(forYears):
     ''' Create scatterplot instance for each location in the location array '''
     traces = []
     # Iterate over every item in location array to plot data for
     for i in range(0,len(locations)):
+        # Create range of years for x-axis
+        yearRange = range(2019-forYears,2019)
+        # Remove ',' from years (2,019 -> 2019)
+        rangeOfYears =  [str(year).replace(',','') for year in yearRange]
         # Instance of scatter plot
-        trace_i = go.Scatter(x = yearRange
-                             , y = sightingsByObjectByYear[forObject][i]
+        trace_i = go.Scatter(x = rangeOfYears
+                             , y = randomData(forYears)
                              , name = locations[i]
                              , marker = {'color': colors[i]}
                              , mode = 'lines+markers'
@@ -58,11 +50,11 @@ def createTraces(forObject,forYears):
         traces.append(trace_i)
     # Return array of scatterplots
     return traces
-    
-def createFigure(forObject,forYears):
+
+def createFigure(forYears):
     ''' Create sighting figure '''
     # Assign traces to data
-    data = createTraces(forObject,forYears)
+    data = createTracesForData(forYears)
     # Set layout
     layout = go.Layout()
     # Return figure
@@ -108,7 +100,7 @@ app.layout = html.Div(children=[
     # Graph of data
     dcc.Graph(
         id='spookyGraphOutput',
-        figure = createFigure(0,10)
+        figure = createFigure(10)
     ),
     # Various links
     html.A('Code on Github', href=githublink),
