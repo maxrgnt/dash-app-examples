@@ -3,8 +3,11 @@ import dash_core_components as dcc
 import dash_html_components as html
 import plotly.graph_objs as go
 import numpy as np
-
 from dash.dependencies import Input, Output, State
+
+ALLOWED_TYPES = (
+    "number"
+)
 
 ########### Define your variables ######
 
@@ -17,15 +20,16 @@ places = ['Castles','Graveyards','Haunted Houses','Forests']
 tabtitle = 'spooktober'
 sourceurl = 'https://www.timeanddate.com/countdown/halloween'
 githublink = 'https://github.com/maxrgnt/pythdc2'
+setYear = 10
 
 ########### Set up the chart
-def randList():
-    return [np.random.randint(low=1, high = 10, size = 1)[0]*n for n in np.random.randint(low=1, high=100, size=10)]
+def randList(years):
+    return [np.random.randint(low=1, high = 10, size = 1)[0]*n for n in np.random.randint(low=1, high=100, size=years)]
 
-def createTraces():
+def createTraces(traceYear):
     tracelist = []
     for i in range(0,len(colors)):
-        trace_i = go.Scatter(x = x_values, y = randList()
+        trace_i = go.Scatter(x = x_values, y = randList(traceYear)
                              , mode = 'lines+markers'
                              , marker = {'color': colors[i]}
                              , line = dict(width = 8, dash = 'dashdot')
@@ -34,9 +38,9 @@ def createTraces():
         tracelist.append(trace_i)
     return tracelist
 
-def create_fig():
+def create_fig(figYears):
     # assign traces to data
-    data = createTraces()
+    data = createTraces(figYears)
     layout = go.Layout()
     return go.Figure(data=data,layout=layout)
 
@@ -49,6 +53,11 @@ app.title=tabtitle
 ########### Set up the layout
 app.layout = html.Div(children=[
     html.H1(myheading),
+        dcc.Input(
+        id="input_{}".format(_),
+        type=_,
+        placeholder="input type {}".format(_),
+        ),
         dcc.RadioItems(
         id='your_input_here',
         options=[
@@ -61,12 +70,10 @@ app.layout = html.Div(children=[
         labelStyle={'display': 'inline-block'}
         ),
     html.Div(id='your_output_here', children=''),
-    html.Div(
         dcc.Graph(
             id='figure-1',
-            figure=create_fig()
-        )
-    ),
+            figure=create_fig(setYears)
+        ),
     html.A('Code on Github', href=githublink),
     html.Br(),
     html.A("Data Source", href=sourceurl),
@@ -84,7 +91,15 @@ def radio_results(image_you_chose):
               [Input('your_input_here', 'value')]
              )
 def new_fig(image_you_chose):
-    return create_fig()
+    return create_fig(setYears)
+
+@app.callback(
+    Output("figure-1", "figure"),
+    [Input("input_{}".format(_), "value") for _ in ALLOWED_TYPES],
+)
+def new_fig(image_you_chose):
+    setYears = "value"
+    return create_fig(setYears)
 
 ############ Deploy
 if __name__ == '__main__':
