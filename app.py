@@ -76,9 +76,6 @@ def create_fig():
     )
     return go.Figure(data=data,layout=layout)
 
-# Generate the figure dictionary
-fig = create_fig()
-
 ########### Initiate the app
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
@@ -100,7 +97,7 @@ app.layout = html.Div(children=[
     html.Div(id='your_output_here', children=''),
     dcc.Graph(
         id='figure-1',
-#         figure=fig
+        figure=create_fig()
     ),
     html.A('Code on Github', href=githublink),
     html.Br(),
