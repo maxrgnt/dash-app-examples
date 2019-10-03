@@ -75,7 +75,7 @@ app.layout = html.Div(children=[
         id='spookySliderInput',
         min=1, max=20,
         step=1, value=10,
-        marks={1: '1 year', 5: '5 years', 10: '10 years', 15: '15 years', 20: '20 years'},
+        marks={1: '1 year', 5: '5 years', 10: '10 years', 15: '15 years', 20: '20 years'}
     ),
     # Break
     html.Br(),
@@ -99,8 +99,7 @@ app.layout = html.Div(children=[
         children=''),
     # Graph of data
     dcc.Graph(
-        id='spookyGraphOutput',
-        figure = createFigure(10)
+        id='spookyGraphOutput'
     ),
     # Various links
     html.A('Code on Github', href=githublink),
@@ -111,7 +110,7 @@ app.layout = html.Div(children=[
 
 ########## Define Callback
 @app.callback(Output('spookyRadioOutput', 'children'),
-              [Input('spookyRadio', 'value')])
+              [Input('spookyRadioInput', 'value')])
 def radio_results(radioInput):
     ''' Return picture for selected radio button '''
     return html.Img(src=app.get_asset_url(radioInput), style={'width': 'auto', 'height': '50%'})
