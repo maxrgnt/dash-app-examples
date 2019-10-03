@@ -108,7 +108,7 @@ app.layout = html.Div(children=[
     # Graph of data
     dcc.Graph(
         id='spookyGraphOutput',
-        figure = createFigure(10)
+#         figure = createFigure(10)
     ),
     # Various links
     html.A('Code on Github', href=githublink),
