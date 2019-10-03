@@ -7,7 +7,7 @@ from dash.dependencies import Input, Output, State
 
 ########### Define your variables ######
 
-myheading = "🎃 Spooky sightings over the years 👻 🧛"
+myheading = "🎃 🧙 Spooky sightings over the years 👻 🧛"
 list_of_options = ['Pumpkins','Witches','Ghosts','Vampires']
 list_of_images = ['pumpkin.jpg','witches.jpeg','ghost.png','vampire.jpeg']
 colors = ['#FF6B35','#FFD151','#136F63','#3E2F5B']
@@ -35,7 +35,9 @@ def createTraces(traceYear):
 def create_fig(figYears):
     # assign traces to data
     data = createTraces(figYears)
-    layout = go.Layout()
+    layout = go.Layout(
+            yaxis={'tickformat': ',d'}
+            )
     return go.Figure(data=data,layout=layout)
 
 ########### Initiate the app
