@@ -90,7 +90,7 @@ app.layout = html.Div(children=[
                 {'label':list_of_options[2], 'value':[2,list_of_images[2]]},
                 {'label':list_of_options[3], 'value':[3,list_of_images[3]]},
                 ],
-        value=list_of_images[0],
+        value=[0,list_of_images[0]],
         labelStyle={'display': 'inline-block'}
     ),
     # Image output from radio buttons
