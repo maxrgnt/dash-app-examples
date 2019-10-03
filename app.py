@@ -83,12 +83,12 @@ def radio_results(image_you_chose):
 def new_fig(image_you_chose):
     return create_fig(5)
 
-@app.callback(
-    Output("figure-1", "figure"),
-    [Input("dfalse", "value")],
-)
-def new_fig(val):
-    return create_fig(val)
+# @app.callback(
+#     Output("figure-1", "figure"),
+#     [Input("dfalse", "value")],
+# )
+# def new_fig(val):
+#     return create_fig(val)
 
 ############ Deploy
 if __name__ == '__main__':
