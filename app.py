@@ -8,8 +8,8 @@ from dash.dependencies import Input, Output, State
 
 ########### Define your variables ######
 
-myheading = "Population stats from 2000s"
-mytitle = "by Spooky Creature"
+myheading = "Spooky sightings of creatures"
+mytitle = "👻"
 x_values = list(range(2009,2019))
 list_of_options = ['Pumpkins','Witches']
 list_of_images = ['pumpkin.jpg','witch.jpg']
@@ -17,11 +17,11 @@ color1 = '#FF6B35'
 color2 = '#FFD151'
 color3 = '#136F63'
 color4 = '#3E2F5B'
-name1 = 'Pumpkins'
-name2 = 'Cats'
-name3 = 'Goblins'
-name4 = 'Witches'
-tabtitle = 'Spooky Sightings'
+name1 = 'Castles'
+name2 = 'Graveyards'
+name3 = 'Haunted Houses'
+name4 = 'Candy Stores'
+tabtitle = 'spooktober'
 sourceurl = 'https://www.infoplease.com/us/population/us-population-state-1790-2015'
 githublink = 'https://github.com/maxrgnt/dash-linechart-example'
 
