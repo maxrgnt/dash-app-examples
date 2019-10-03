@@ -68,14 +68,16 @@ def createTraces():
     )
     return[trace0,trace1,trace2,trace3]
 
-# assign traces to data
-data = createTraces()
-layout = go.Layout(
-    title = mytitle
-)
+def create_fig():
+    # assign traces to data
+    data = createTraces()
+    layout = go.Layout(
+        title = mytitle
+    )
+    return go.Figure(data=data,layout=layout)
 
 # Generate the figure dictionary
-fig = go.Figure(data=data,layout=layout)
+fig = create_fig()
 
 ########### Initiate the app
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
@@ -112,14 +114,14 @@ app.layout = html.Div(children=[
 def radio_results(image_you_chose):
     return html.Img(src=app.get_asset_url(image_you_chose), style={'width': 'auto', 'height': '50%'}),
 
-@app.callback(Output('figure-1', 'figure'),
-              [Input('your_input_here', 'value')])
-def create_fig():
-    data = createTraces()
-    layout = go.Layout(
-        title = mytitle
-    )
-    return fig = go.Figure(data=data,layout=layout)
+# @app.callback(Output('figure-1', 'figure'),
+#               [Input('your_input_here', 'value')])
+# def create_fig():
+#     data = createTraces()
+#     layout = go.Layout(
+#         title = mytitle
+#     )
+#     return fig = go.Figure(data=data,layout=layout)
 
 ############ Deploy
 if __name__ == '__main__':
