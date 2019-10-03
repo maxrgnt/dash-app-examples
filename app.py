@@ -79,7 +79,7 @@ def radio_results(image_you_chose):
     return html.Img(src=app.get_asset_url(image_you_chose), style={'width': 'auto', 'height': '50%'})
 
 @app.callback(Output('figure-1', 'figure'),
-              [Input('your_input_here', 'value')]
+#               [Input('your_input_here', 'value')]
              )
 def new_fig(image_you_chose):
     return create_fig(5)
