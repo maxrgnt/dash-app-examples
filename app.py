@@ -51,10 +51,10 @@ app.layout = html.Div(children=[
     html.H1(myheading),
         dcc.Input(
             value = 5,
-            id="newyear", 
-            type="number", 
-            placeholder="11"),
-        html.Div(id="number-out"),
+            id='newyear', 
+            type='number', 
+            placeholder='11'),
+        html.Div(id='number-out'),
         dcc.RadioItems(
             id='your_input_here',
             options=[
@@ -95,7 +95,7 @@ def new_fig(image_you_chose):
 
 ########## Define Callback
 @app.callback(Output('figure-1', 'figure'), #Output("number-out", "children"),
-            [Input("newyear", "value")]
+            [Input('newyear', 'value')]
             )
 def number_render(val):
     return create_fig(Int(val)) #"years: {}".format(val)
