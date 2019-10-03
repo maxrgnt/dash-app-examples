@@ -54,7 +54,6 @@ app.layout = html.Div(children=[
             value = 5,
             id='newyear', 
             type='number'),
-        html.Div(id='number-out'),
         dcc.RadioItems(
             id='your_input_here',
             options=[
@@ -92,14 +91,6 @@ def radio_results(image_you_chose):
              )
 def new_fig(inp1,inp2):
     return create_fig(inp2)
-
-########## Define Callback
-@app.callback(Output('number-out', 'children'), #Output('figure-1', 'figure'), 
-            [Input('newyear', 'value')]
-            )
-def number_render(val):
-    return 'years: {}'.format(val) #create_fig(Int(val)) 
-
 
 ############ Deploy
 if __name__ == '__main__':
