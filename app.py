@@ -3,7 +3,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 import plotly.graph_objs as go
 import numpy as np
-from dash.dependencies import Input, Output
+from dash.dependencies import Input, Output, State
 
 ########### Define your variables ######
 
@@ -91,11 +91,11 @@ def radio_results(image_you_chose):
 def new_fig(image_you_chose):
     return create_fig(10)
 
-@app.callback(Output("number-out", "children"),
-            [Input("dfalse", "value")],
-            )
-def number_render(fval):
-    return "years: {}".format(fval)
+# @app.callback(Output("number-out", "children"),
+#             [Input("dfalse", "value")],
+#             )
+# def number_render(fval):
+#     return "years: {}".format(fval)
 
 ############ Deploy
 if __name__ == '__main__':
