@@ -98,7 +98,7 @@ def new_fig(image_you_chose):
             [Input("newyear", "value")],
             )
 def number_render(val):
-    return create_fig(val) #"years: {}".format(val)
+    return create_fig(Int(val)) #"years: {}".format(val)
 
 
 ############ Deploy
