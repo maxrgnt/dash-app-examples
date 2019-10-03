@@ -19,7 +19,7 @@ githublink = 'https://github.com/maxrgnt/pythdc2'
 
 def randomData(forYears):
     ''' Return an array of random data for the number of years passed in '''
-    let numberOfYears = forYears
+    numberOfYears = forYears
     # Create array of random number of sightings per year
     sightingsPerYear = np.random.randint(low=1, high=100, size=numberOfYears)
     # Multiplier to further randomize the number of sightings per year
