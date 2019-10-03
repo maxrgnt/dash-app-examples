@@ -7,7 +7,7 @@ from dash.dependencies import Input, Output, State
 
 ########### Define your variables ######
 
-myheading = "🎃 🧙‍♀️ Spooky sightings over past 10 years 👻 🧛"
+myheading = "🎃 Spooky sightings over past 10 years 👻 🧛"
 x_values = list(range(2009,2019))
 list_of_options = ['Pumpkins','Witches','Ghosts','Vampires']
 list_of_images = ['pumpkin.jpg','witches.jpeg','ghost.png','vampire.jpeg']
