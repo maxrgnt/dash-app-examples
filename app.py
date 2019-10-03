@@ -13,7 +13,7 @@ colors = ['#FF6B35','#FFD151','#136F63','#3E2F5B']
 locations = ['Castles','Graveyards','Haunted Houses','Forests']
 tabtitle = 'spooktober'
 sourceurl = 'https://www.timeanddate.com/countdown/halloween'
-githublink = 'https://github.com/maxrgnt/pythdc2'
+githublink = 'https://github.com/maxrgnt/pythdc2/blob/master/app.py'
 
 ########### Set up the chart
 
