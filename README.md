@@ -1,2 +1,2 @@
 # pythdc2
-Project
+Lesson 10 project
