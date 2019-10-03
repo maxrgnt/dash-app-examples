@@ -124,11 +124,11 @@ def updateImageUsing(radioInput):
     ''' Return picture for selected radio button '''
     return html.Img(src=app.get_asset_url(radioInput[1]), style={'width': 'auto', 'height': '50%'})
 
-@app.callback(Output('spookyGraphOutput', 'figure'),
-             [Input('spookyRadioInput', 'value'), Input('spookySliderInput', 'value')])
-def updateGraphUsing(radioInput,sliderInput):
-    ''' Update graph with new random data when radio button or slider altered '''
-    return createFigure(radioInput[0],sliderInput)
+# @app.callback(Output('spookyGraphOutput', 'figure'),
+#              [Input('spookyRadioInput', 'value'), Input('spookySliderInput', 'value')])
+# def updateGraphUsing(radioInput,sliderInput):
+#     ''' Update graph with new random data when radio button or slider altered '''
+#     return createFigure(radioInput[0],sliderInput)
 
 ############ Deploy
 if __name__ == '__main__':
