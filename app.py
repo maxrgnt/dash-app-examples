@@ -19,8 +19,6 @@ objects = [' Pumpkins ',' Witches ',' Ghosts ',' Vampires ']
 objectImages = ['pumpkin.jpg','witches.jpeg','ghost.png','vampire.jpeg']
 # Dynamic Data
 years = 10
-yearRange = setYearRange(years)
-sightingsByObjectByYear = generateRandomData(years)
 
 def setYearRange(forYears):
     # Create range of years given # years passed in
@@ -58,7 +56,10 @@ def createTraces(forObject,forYears):
         traces.append(trace_i)
     # Return array of scatterplots
     return traces
-    
+
+yearRange = setYearRange(years)
+sightingsByObjectByYear = generateRandomData(years)
+
 def createFigure(forYears):
     ''' Create sighting figure '''
     # Assign traces to data
