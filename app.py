@@ -68,41 +68,41 @@ app.title=tabtitle
 
 ########### Set up the layout
 app.layout = html.Div(children=[
+    # Heading
     html.H1(myheading),
-        dcc.Slider(
-            id='myslider',
-            min=1,
-            max=20,
-            step=1,
-            value=10,
-            marks={
-                1: '1 year',
-                5: '5 years',
-                10: '10 years',
-                15: '15 years',
-                20: '20 years'
-            },
-        ),
-        html.Br(),
-        html.H2('What sighting are you interested in?'),
-        dcc.RadioItems(
-            id='your_input_here',
-            options=[
-                    {'label':list_of_options[0], 'value':list_of_images[0]},
-                    {'label':list_of_options[1], 'value':list_of_images[1]},
-                    {'label':list_of_options[2], 'value':list_of_images[2]},
-                    {'label':list_of_options[3], 'value':list_of_images[3]},
-                    ],
-            value=list_of_images[0],
-            labelStyle={'display': 'inline-block'}
-        ),
-        html.Div(
-            id='your_output_here', 
-            children=''),
-        dcc.Graph(
-            id='figure-1',
-            figure=createFigure(10)
-        ),
+    # Slider
+    dcc.Slider(
+        id='spookySliderInput',
+        min=1, max=20,
+        step=1, value=10,
+        marks={1: '1 year', 5: '5 years', 10: '10 years', 15: '15 years', 20: '20 years'},
+    ),
+    # Break
+    html.Br(),
+    # Subheading
+    html.H2(
+        'What sighting are you interested in?'),
+    # Radio buttons
+    dcc.RadioItems(
+        id='spookyRadioInput',
+        options=[
+                {'label':list_of_options[0], 'value':list_of_images[0]},
+                {'label':list_of_options[1], 'value':list_of_images[1]},
+                {'label':list_of_options[2], 'value':list_of_images[2]},
+                {'label':list_of_options[3], 'value':list_of_images[3]},
+                ],
+        value=list_of_images[0],
+        labelStyle={'display': 'inline-block'}
+    ),
+    # Image output from radio buttons
+    html.Div(
+        id='spookyRadioOutput', 
+        children=''),
+    # Graph of data
+    dcc.Graph(
+        id='spookyGraphOutput'
+    ),
+    # Various links
     html.A('Code on Github', href=githublink),
     html.Br(),
     html.A("Data Source", href=sourceurl),
@@ -110,17 +110,17 @@ app.layout = html.Div(children=[
 )
 
 ########## Define Callback
-@app.callback(Output('your_output_here', 'children'),
-              [Input('your_input_here', 'value')])
-def radio_results(radioButton):
+@app.callback(Output('spookyRadioOutput', 'children'),
+              [Input('spookyRadio', 'value')])
+def radio_results(radioInput):
     ''' Return picture for selected radio button '''
-    return html.Img(src=app.get_asset_url(radioButton), style={'width': 'auto', 'height': '50%'})
+    return html.Img(src=app.get_asset_url(radioInput), style={'width': 'auto', 'height': '50%'})
 
-@app.callback(Output('figure-1', 'figure'),
-              [Input('your_input_here', 'value'),Input('myslider', 'value')])
-def new_fig(radioButton,sliderVal):
+@app.callback(Output('spookyGraphOutput', 'figure'),
+              [Input('spookyRadioInput', 'value'),Input('spookySliderInput', 'value')])
+def new_fig(radioInput,sliderInput):
     ''' Update graph with new random data when radio button or slider altered '''
-    return createFigure(sliderVal)
+    return createFigure(sliderInput)
 
 ############ Deploy
 if __name__ == '__main__':
