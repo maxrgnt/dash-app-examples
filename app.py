@@ -23,7 +23,7 @@ def randList(years):
 def createTraces(traceYear):
     tracelist = []
     for i in range(0,len(colors)):
-        trace_i = go.Scatter(x = [str(a) for a in range(2019-traceYear,2019)]
+        trace_i = go.Scatter(x = [str(a).replace(',','') for a in range(2019-traceYear,2019)]
                              , y = randList(traceYear)
                              , mode = 'lines+markers'
                              , marker = {'color': colors[i]}
