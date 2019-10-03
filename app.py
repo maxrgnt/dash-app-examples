@@ -31,7 +31,7 @@ def createTraces():
                              , line = dict(width = 8, dash = 'dashdot')
                              , name = places[i]
                             )
-    tracelist.append(trace_i)
+        tracelist.append(trace_i)
     return tracelist
 
 def create_fig():
