@@ -5,10 +5,6 @@ import plotly.graph_objs as go
 import numpy as np
 from dash.dependencies import Input, Output, State
 
-ALLOWED_TYPES = (
-    "number"
-)
-
 ########### Define your variables ######
 
 myheading = "🎃 🧙‍♀️ Spooky sightings over past 10 years 👻 🧛"
@@ -89,13 +85,13 @@ def radio_results(image_you_chose):
 def new_fig(image_you_chose):
     return create_fig(setYears)
 
-@app.callback(
-    Output("figure-1", "figure"),
-    [Input("dfalse", "value")],
-)
-def new_fig(val):
-    setYears = val
-    return create_fig(setYears)
+# @app.callback(
+#     Output("figure-1", "figure"),
+#     [Input("dfalse", "value")],
+# )
+# def new_fig(val):
+#     setYears = val
+#     return create_fig(setYears)
 
 ############ Deploy
 if __name__ == '__main__':
