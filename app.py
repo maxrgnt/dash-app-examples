@@ -50,9 +50,10 @@ app.title=tabtitle
 app.layout = html.Div(children=[
     html.H1(myheading),
         dcc.Input(
+            value = "10",
             id="newyear", 
             type="number", 
-            placeholder="10 years"),
+            placeholder="10"),
         html.Div(id="number-out"),
         dcc.RadioItems(
             id='your_input_here',
@@ -95,6 +96,7 @@ def new_fig(image_you_chose):
             [Input("newyear", "value")],
             )
 def number_render(fval):
+    print(Int(fval))
     return "years: {}".format(fval)
 
 ############ Deploy
