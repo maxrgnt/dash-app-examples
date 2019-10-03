@@ -104,14 +104,19 @@ app.layout = html.Div(children=[
 
 ########## Define Callback
 @app.callback(Output('your_output_here', 'children'),
-              [Input('your_input_here', 'value')])
+              [Input('your_input_here', 'value')]
+             )
 def radio_results(image_you_chose):
     return html.Img(src=app.get_asset_url(image_you_chose), style={'width': 'auto', 'height': '50%'})
 
 @app.callback(Output('figure-1', 'figure'),
-              [Input('your_input_here', 'value')])
+              [Input('your_input_here', 'value')]
+             )
 def new_fig():
-    return create_fig()
+    # assign traces to data
+    return {'data': createTraces(),
+            'layout': go.Layout()
+           }
 
 ############ Deploy
 if __name__ == '__main__':
